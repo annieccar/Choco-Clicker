@@ -1,0 +1,22 @@
+body {
+    font-family: 'Titillium Web', sans-serif;
+    box-sizing: border-box;
+}
+header {
+    background-color: aquamarine;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.identity {
+    background-color: bisque;
+    display: flex;
+    align-items: center;   
+}
+.name {
+    background-color: lightpink;
+}
+
+.player-name {
+
+}
