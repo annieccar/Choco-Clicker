@@ -1,3 +1,14 @@
+:root {
+    --background-color: #14213D;
+    --Text-primary:#FCA311;
+    --Text-secondary: #E5E5E5;
+    
+}
+
+main {
+    background-color: var(--background-color);
+}
+
 body {
     font-family: 'Titillium Web', sans-serif;
     box-sizing: border-box;
