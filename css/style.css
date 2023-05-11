@@ -18,5 +18,10 @@ header {
 }
 
 .player-name {
+    
+}
 
+.item-box {
+    background-color: lightblue;
+    display: flex;
 }
