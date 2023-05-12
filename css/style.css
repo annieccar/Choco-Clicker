@@ -1,7 +1,8 @@
 :root {
-    --background-color: #14213D;
-    --Text-primary:#FCA311;
-    --Text-secondary: #E5E5E5;
+    --background-primary: #1252525;
+    --background-secondary: #14213D;
+    --text-primary:#FCA311;
+    --text-secondary: #E5E5E5;
     
 }
 body {
