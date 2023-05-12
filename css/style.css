@@ -7,38 +7,34 @@
 body {
     font-family: 'Titillium Web', sans-serif;
     box-sizing: border-box;
-    background-color: var(--background-primary);
+    background-color: var(--dark-primary);
 }
 header {
-    background-color: var(--background-secondary);
+    background-color: var(--dark-secondary);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: var(--text-primary)
+    color: var(--light-primary)
 }
 .identity {
-    background-color: bisque;
     display: flex;
     align-items: center;   
 }
-.name {
-    background-color: lightpink;
-}
-
-.player-name {
-    
+.logo {
+    display: flex;
+    align-items: center;
 }
 main {
-    color: var(--text-secondary);
+    color: var(--light-secondary);
 }
 .item-box {
-    background-color: var(--background-secondary);
-    color: var(--text-primary);
     display: flex;
     justify-content: space-around;
 }
 
 .item {
+    background-color: var(--light-secondary);
+    color: var(--dark-primary);
     margin-right: 15px;
 }
 
@@ -48,6 +44,14 @@ main {
     justify-content: space-evenly;
     align-items: center;
 }
+.choco-message {
+    background-color: var(--light-secondary);
+    color: var(--dark-primary);
+}
 .chocolatine {
     max-width: 100%;
+}
+.score {
+    background-color: var(--light-secondary);
+    color: var(--dark-primary);
 }
