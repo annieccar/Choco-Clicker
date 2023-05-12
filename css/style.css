@@ -28,16 +28,9 @@ header {
 .player-name {
     
 }
-<<<<<<< HEAD
-
-
-/* Partie Nico */
-
-=======
 main {
     color: var(--text-secondary);
 }
->>>>>>> 80e3e562ad5da85a99a996d29242d341ee72d22c
 .item-box {
     background-color: lightblue;
     display: flex;
