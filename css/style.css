@@ -21,7 +21,15 @@ header {
     
 }
 
+
+/* Partie Nico */
+
 .item-box {
     background-color: lightblue;
     display: flex;
+    justify-content: space-around;
+}
+
+.item {
+    margin-right: 15px;
 }
