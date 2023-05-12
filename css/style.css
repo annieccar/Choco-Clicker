@@ -3,19 +3,18 @@
     --background-secondary: #14213D;
     --text-primary:#FCA311;
     --text-secondary: #E5E5E5;
-    
 }
 body {
     font-family: 'Titillium Web', sans-serif;
     box-sizing: border-box;
-    background-color: var(--background-color);
+    background-color: var(--background-primary);
 }
 header {
     background-color: aquamarine;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: var(--Text-primary)
+    color: var(--text-primary)
 }
 .identity {
     background-color: bisque;
@@ -30,7 +29,7 @@ header {
     
 }
 main {
-    color: var(--Text-secondary);
+    color: var(--text-secondary);
 }
 .item-box {
     background-color: lightblue;
