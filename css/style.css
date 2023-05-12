@@ -41,6 +41,13 @@ main {
 .item {
     margin-right: 15px;
 }
+
+.choco-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
 .chocolatine {
-    width: 100%;
+    max-width: 100%;
 }
