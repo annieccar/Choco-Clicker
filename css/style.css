@@ -1,5 +1,5 @@
 :root {
-    --background-primary: #1252525;
+    --background-primary: #252525;
     --background-secondary: #14213D;
     --text-primary:#FCA311;
     --text-secondary: #E5E5E5;
@@ -10,7 +10,7 @@ body {
     background-color: var(--background-primary);
 }
 header {
-    background-color: aquamarine;
+    background-color: var(--background-secondary);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -32,7 +32,8 @@ main {
     color: var(--text-secondary);
 }
 .item-box {
-    background-color: lightblue;
+    background-color: var(--background-secondary);
+    color: var(--text-primary);
     display: flex;
     justify-content: space-around;
 }
