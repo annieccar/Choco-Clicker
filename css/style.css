@@ -1,8 +1,8 @@
 :root {
-    --background-primary: #252525;
-    --background-secondary: #14213D;
-    --text-primary:#FCA311;
-    --text-secondary: #E5E5E5;
+    --dark-primary: #252525;
+    --dark-secondary: #636262;
+    --light-primary:#FCA311;
+    --light-secondary: #E5E5E5;
 }
 body {
     font-family: 'Titillium Web', sans-serif;
