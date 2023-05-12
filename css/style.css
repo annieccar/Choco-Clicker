@@ -34,8 +34,9 @@ main {
 .item-box {
     background-color: lightblue;
     display: flex;
+    justify-content: space-around;
 }
 
-.choco-box{
-    
+.item {
+    margin-right: 15px;
 }
