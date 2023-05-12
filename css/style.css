@@ -1,7 +1,7 @@
 :root {
     --dark-primary: #252525;
-    --dark-secondary: #636262;
-    --light-primary:#FCA311;
+    --dark-secondary: #FCA311;
+    --light-primary:#252525;
     --light-secondary: #E5E5E5;
 }
 body {
@@ -62,8 +62,9 @@ main {
     max-width: 100%;
 }
 .score {
-    background-color: var(--light-secondary);
+    background-color: var(--dark-secondary);
     color: var(--dark-primary);
+    font-family: 'Luckiest Guy', cursive;
     width: 50%;
     text-align:  center;
     border-radius: 1em;
