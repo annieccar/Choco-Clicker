@@ -4,20 +4,17 @@
     --Text-secondary: #E5E5E5;
     
 }
-
-main {
-    background-color: var(--background-color);
-}
-
 body {
     font-family: 'Titillium Web', sans-serif;
     box-sizing: border-box;
+    background-color: var(--background-color);
 }
 header {
     background-color: aquamarine;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: var(--Text-primary)
 }
 .identity {
     background-color: bisque;
@@ -31,7 +28,9 @@ header {
 .player-name {
     
 }
-
+main {
+    color: var(--Text-secondary);
+}
 .item-box {
     background-color: lightblue;
     display: flex;
