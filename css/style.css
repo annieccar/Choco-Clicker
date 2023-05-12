@@ -49,6 +49,9 @@ main {
 .choco-message {
     background-color: var(--light-secondary);
     color: var(--dark-primary);
+    width: 90%;
+    text-align: center;
+    border-radius: 1em;
 }
 .chocolatine {
     max-width: 100%;
@@ -56,4 +59,7 @@ main {
 .score {
     background-color: var(--light-secondary);
     color: var(--dark-primary);
+    width: 50%;
+    text-align:  center;
+    border-radius: 1em;
 }
