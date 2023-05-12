@@ -1,12 +1,20 @@
+:root {
+    --background-primary: #1252525;
+    --background-secondary: #14213D;
+    --text-primary:#FCA311;
+    --text-secondary: #E5E5E5;
+}
 body {
     font-family: 'Titillium Web', sans-serif;
     box-sizing: border-box;
+    background-color: var(--background-primary);
 }
 header {
     background-color: aquamarine;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: var(--text-primary)
 }
 .identity {
     background-color: bisque;
@@ -20,10 +28,16 @@ header {
 .player-name {
     
 }
+<<<<<<< HEAD
 
 
 /* Partie Nico */
 
+=======
+main {
+    color: var(--text-secondary);
+}
+>>>>>>> 80e3e562ad5da85a99a996d29242d341ee72d22c
 .item-box {
     background-color: lightblue;
     display: flex;
