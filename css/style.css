@@ -20,7 +20,7 @@ body {
 }
 header {
     background-color: var(--primary-color);
-    color: var(--secondary-color);
+    color: var(--background-color);
     font-family: 'Luckiest Guy', cursive; 
     display: flex;
     justify-content: space-between;
