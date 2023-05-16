@@ -1,69 +1,91 @@
 :root {
-    --dark-primary: #252525;
-    --dark-secondary: #FCA311;
-    --light-primary:#252525;
-    --light-secondary: #E5E5E5;
+    --background-color: rgba(20, 33, 61); /* #252525 */
+    --background-shade: rgba(229, 229, 229, .1);
+    --primary-color: rgba(252, 163, 17); /* #fca311 */
+    --pulse: rgba(252, 163, 17, 0.02);
+    --secondary-color: rgba(37, 37, 37); /* #14213D */
+    --text-color: rgba(229, 229, 229); /* #e5e5e5*/
+
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    user-select: none;
 }
 body {
-    font-family: 'Titillium Web', sans-serif;
-    box-sizing: border-box;
-    background-color: var(--dark-primary);
+    background-color: var(--background-color);
+    font-family: 'Titillium Web', sans-serif;    
 }
 header {
-    background-color: var(--dark-secondary);
-    font-family: 'Luckiest Guy', cursive;
+    background-color: var(--primary-color);
+    color: var(--background-color);
+    font-family: 'Luckiest Guy', cursive; 
     display: flex;
     justify-content: space-between;
     align-items: center;
-    color: var(--light-primary)
 }
 .identity {
     display: flex;
-    align-items: center;   
+    align-items: center;  
 }
 .logo {
-    display: flex;
-    align-items: center;
-}
-.choco-logo {
     width: 6em;
     height: auto;
 }
 main {
-    color: var(--light-secondary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 .item-box {
+    background-color: var(--background-shade);
     display: flex;
     justify-content: space-around;
     margin: 1em 0.5em 1em 0.5em;
 }
-
 .item {
-    background-color: var(--light-secondary);
-    color: var(--dark-primary);
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
     margin-right: 15px;
 }
-
-.choco-box {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    margin: 1em 0.5em 2em 0.5em;
-}
 .choco-message {
-    background-color: var(--light-secondary);
-    color: var(--dark-primary);
+    background-color: var(--background-shade);
+    color: var(--text-color);
     width: 90%;
     text-align: center;
     border-radius: 1em;
 }
-.chocolatine {
-    max-width: 100%;
+.choco {
+    max-width: 40em;
+    border-radius: 50%;
+    cursor: pointer;
+    filter: drop-shadow(0 0 .3em var(--primary-color));
+    animation: tilt 2.5s infinite;
+}
+.choco:hover {
+    animation: none;
+}
+/*Keyframes*/
+@keyframes tilt {
+    0% {
+        transform: translateX(0);
+    } 3.4% {
+        transform: translateX(-0.3em);
+    } 6.8% {
+        transform: translateX(0.3em);
+    } 10.2% {
+        transform: translateX(-0.3em);
+    } 13.6% {
+        transform: translateX(0.3em);
+    } 17% {
+        transform: translateX(0);
+    }
 }
 .score {
-    background-color: var(--dark-secondary);
-    color: var(--dark-primary);
+    background-color: var(--background-shade);
+    color: var(--text-color);
     font-family: 'Luckiest Guy', cursive;
     width: 50%;
     text-align:  center;
