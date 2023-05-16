@@ -13,16 +13,10 @@
 <body>
     <header>
         <section class="identity">
-            <section class="logo">
-                <img class="choco-logo" src="src/logo.webp" alt="Image aléatoire">
-            </section>
-            <section class="title">
-                <h1>Choco Clicker</h1>
-            </section>
+            <img class="logo" src="src/logo.webp" alt="Image aléatoire">
+            <h1 class="title">Choco Clicker</h1>
         </section>
-        <section class="name">
-            <p class="player-name">Bakery Name</p>
-        </section>
+        <p class="name">Bakery Name</p>
     </header>
     <main>
         <section class="item-box">
@@ -45,17 +39,9 @@
                 <button>Price</button>
             </div>
         </section>
-        <section class="choco-box">
-            <section class="choco-message">
-                <p>Le tuto ici</p>
-            </section>
-            <section class="chocolatine-box">
-                <img class="chocolatine" src="src/choco.webp" alt="Miam la Choco">
-            </section>
-            <section class="score">
-                <p>Score</p>
-            </section>
-        </section>
+        <div class="choco-message">Le tuto ici</div>
+        <img class="choco" id="choco" src="src/choco.webp" alt="Bouton Chocolatine">
+        <div class="score" id="score"><span>0</span> Chocolatines</div>
     </main>
     <scrip src="script/script.js"></script>
 </body>
