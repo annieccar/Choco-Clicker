@@ -1,9 +1,10 @@
 //SECTION HEADER
 //Sélectionner le bouton "bakery name"
-const name = document.querySelector(".name");
+const bakery = document.querySelector(".bakery");
 
-name.addEventListener("click", function () {
+bakery.addEventListener("click", () => {
   const bakeryName = prompt("Enter a name for your bakery:");
+  console.log("test");
 });
 
 // SECTION CHOCO
@@ -37,25 +38,38 @@ const chocoClicked = (chocolatines) => {
   const scoreValue = chocolatines ? chocolatines : parseInt(score.innerText);
   let newScore;
   newScore = scoreValue + 1;
-
   updateScore(newScore);
 };
 
 //écoute si on clique sur choco
 choco.addEventListener("click", () => {
-  chocoClicked();
+  console.log("hello");
 });
 
-// Brouillon de variables. Fortune liée à score pour l'affichage, incrémentée par l'action click sur choco.  
-let fortune = 0
+//SECTION ITEMS
+//Brouillon de variables. Fortune liée à score pour l'affichage, incrémentée par l'action click sur choco.
+let fortune = 0;
 const score = document.querySelector("#score");
 
-choco.addEventListener("click", ()) {
+choco.addEventListener("click", () => {
   score.textContent = fortune++;
-}
+});
 
-// Variable timer. À définir selon les achats possibles : student, stone student, teacher, clandestine baker etc..
-const rendement = setInterval(function () {
-  count = count + ?  // ou peut-être - . Genre malus 
-  score.textContent = count;
-}, 1000);
+//Variable timer. À définir selon les achats possibles : student, stone student, teacher, clandestine baker etc..
+// const rendement = setInterval(function () {
+//   count = count++; // ou peut-être - . Genre malus
+//   score.textContent = count;
+// }, 1000);
+
+//Incrémentation quantité et retour prix quand on 'click':
+
+const button1 = document.querySelector("#price1");
+let qty1 = 0;
+button1.addEventListener("click", function () {
+  // incrémente quantité:
+  const quantity1 = document.querySelector("#quantity1");
+  const price1 = button1.value;
+  quantity1.innerHTML = "Quantity: " + qty1++;
+
+  //Décrémente score du prix:
+});
