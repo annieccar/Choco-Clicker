@@ -36,3 +36,19 @@ const chocoClicked = (chocolatines) => {
 choco.addEventListener("click", () => {
   chocoClicked();
 });
+
+// Brouillon de variables. Fortune liée à score pour l'affichage, incrémentée par l'action click sur choco.  
+
+let fortune = 0
+const score = document.querySelector("#score");
+
+choco.addEventListener("click", ()) {
+  score.textContent = fortune++;
+}
+
+// Variable timer. À définir selon les achats possibles : student, stone student, teacher, clandestine baker etc..
+
+const rendement = setInterval(function () {
+  count = count + ?  // ou peut-être - . Genre malus 
+  score.textContent = count;
+}, 1000);
