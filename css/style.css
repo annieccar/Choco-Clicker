@@ -73,7 +73,7 @@ main {
     border-radius: 50%;
     cursor: pointer;
     filter: drop-shadow(0 0 .3em var(--primary-color));
-    animation: tilt 2.5s infinite;
+    animation: tilt 3s infinite;
 }
 .choco:hover {
     animation: none;
@@ -82,15 +82,15 @@ main {
 @keyframes tilt {
     0% {
         transform: translateX(0);
-    } 3.4% {
+    } 3% {
         transform: translateX(-0.3em);
-    } 6.8% {
+    } 6% {
         transform: translateX(0.3em);
-    } 10.2% {
+    } 9% {
         transform: translateX(-0.3em);
-    } 13.6% {
+    } 12% {
         transform: translateX(0.3em);
-    } 17% {
+    } 15% {
         transform: translateX(0);
     }
 }
