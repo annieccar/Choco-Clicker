@@ -1,3 +1,12 @@
+//SECTION HEADER
+//Sélectionner le bouton "bakery name"
+const name = document.querySelector(".name");
+
+name.addEventListener("click", function () {
+  const bakeryName = prompt("Enter a name for your bakery:");
+});
+
+// SECTION CHOCO
 //importer la chocolatine
 const choco = document.querySelector("#choco");
 

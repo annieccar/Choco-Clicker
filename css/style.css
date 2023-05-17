@@ -25,14 +25,25 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
 }
 .identity {
     display: flex;
-    align-items: center;  
+    align-items: center;
 }
 .logo {
-    width: 6em;
+    width: 12em;
     height: auto;
+}
+.name {
+    margin:1em;
+    padding: 0.8em 0.5em;
+    background-color: var(--background-color);
+    color: var(--primary-color); 
+    border: solid 0.5em;
+    border-radius: 15px;
+    font-family: 'Luckiest Guy', cursive;
+    font-size: medium;
 }
 main {
     display: flex;
