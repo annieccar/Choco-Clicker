@@ -1,6 +1,7 @@
 :root {
     --background-color: rgba(20, 33, 61); /* #252525 */
     --background-shade: rgba(229, 229, 229, .1);
+    --background-overlay: rgba(37, 37, 37, .7);
     --primary-color: rgba(252, 163, 17); /* #fca311 */
     --pulse: rgba(252, 163, 17, 0.02);
     --secondary-color: rgba(37, 37, 37); /* #14213D */
@@ -16,7 +17,7 @@
 }
 body {
     background-color: var(--background-color);
-    font-family: 'Titillium Web', sans-serif;    
+    font-family: 'Titillium Web', sans-serif;  
 }
 header {
     background-color: var(--primary-color);
@@ -45,7 +46,66 @@ header {
     font-family: 'Luckiest Guy', cursive;
     font-size: 1em;
 }
-
+.popup-container {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+    background-color: var(--background-overlay);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.popup {
+    background-color: var(--background-color);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1em;
+    border: .1em solid var(--primary-color);
+    box-shadow: 0 0 .6em .2em var(--primary-color);
+    padding: 1em;
+}
+.popup-close {
+    font-size: 2em;
+    color: var(--text-color);
+    align-self: flex-end;
+}
+.popup-title {
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 1.5em;
+    color: var(--primary-color);
+}
+.popup-input {
+    background-color: var(--background-shade);
+    border: none;
+    border-radius: .5em;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 1em;
+    margin: .5em;
+    padding: .5em;
+    text-align: center;
+}
+.popup-input:focus {
+    outline: none;
+    box-shadow: 0 0 .2em .1em var(--primary-color);
+}
+.popup-submit {
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: .5em;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 1em;
+    margin: .5em;
+    text-align: center;
+    padding: .2em;
+}
+/* .hidden {
+    display: none;
+} */
 main {
     display: flex;
     flex-direction: column;
@@ -75,7 +135,7 @@ main {
     font-family:'Luckiest Guy', cursive;
     color: var(--primary-color);
 }
-div > button{
+.price-button {
     margin-top: 0.8em;
     padding: 0.5em;
     background-image: linear-gradient(var(--primary-color), white, var(--primary-color));
@@ -95,7 +155,7 @@ div > button{
     border-radius: 1em;
 }
 .choco {
-    max-width: 40em;
+    max-width: 20em;
     border-radius: 50%;
     cursor: pointer;
     filter: drop-shadow(0 0 .3em var(--primary-color));
