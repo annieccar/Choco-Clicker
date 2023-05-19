@@ -45,28 +45,28 @@ choco.addEventListener("click", () => {
 //WORKER LIST
 const workerList = [
   {
-    id: "1",
+    id: "0",
     name: "Wilder",
     qty: "0",
     cps: "10",
     price: "50",
   },
   {
-    id: "2",
+    id: "1",
     name: "Instructor",
     qty: "0",
     cps: "50",
     price: "250",
   },
   {
-    id: "3",
+    id: "2",
     name: "Tourist",
     qty: "0",
     cps: "250",
     price: "1250",
   },
   {
-    id: "4",
+    id: "3",
     name: "Anna Stepanoff",
     qty: "0",
     cps: "1250",
@@ -110,6 +110,9 @@ for (let i = 0; i < workerList.length; i++) {
     workerList[i].price
   );
 }
+
+//j'achète un worker
+function buyWorker(id) {}
 //Incrémentation quantité et retour prix quand on 'click'sur l'item:
 // const price1 = document.querySelector("#price1");
 // let qty1 = 1;
