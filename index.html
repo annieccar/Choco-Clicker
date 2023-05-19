@@ -6,8 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="src/choco.webp" type="image/x-icon">
     <title>Choco Clicker</title>
-    <link rel="stylesheet" href="css/style.css" 
-    <link rel="stylesheet" href="styledesk.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Titillium+Web&display=swap" rel="stylesheet">
@@ -21,19 +20,19 @@
     </header>
     <main>
         <section class="item-box">
-            <div class="item disable">
+            <div class="item item1 disable">
                 <p class="item-name">Wilder</p>
                 <p id ="quantity1">Quantity: 0</p>
                 <p id = "cps1">+10 choco/s</p>
                 <button id="price1" data-price="30">30 Choco</button>
             </div>
-            <div class="item disable">
+            <div class="item item2 disable">
                 <p class="item-name">Instructor</p>
                 <p id="quantity2">Quantity: 0</p>
                 <p id = "cps2">+20 choco/s</p>
                 <button id="price2" data-price="60">60 Choco</button>
             </div>
-            <div class="item disable">
+            <div class="item item3 disable">
                 <p class="item-name">Tourist</p>
                 <p id="quantity3">Quantity: 0</p>
                 <p id = "cps3">+5 choco/s</p>
@@ -46,6 +45,13 @@
         </div>
         <div id="score" class="score" ><span>0</span> Chocolatines</div>
     </main>
+    <div class="popup-container hidden">
+        <div class="popup">
+            <div class="popup-title">Choose your bakery  name</div>
+            <input class="popup-input" type="text" placeholder="Bakery Name"></input>
+            <button class="popup-submit">Submit</button>
+        </div>
+    </div>
     <div class="choco-clicks"></div>
     <script src="script/script.js"></script>
 </body>

@@ -1,10 +1,6 @@
-//SECTION HEADER
-//Sélectionner le bouton "bakery name"
+//HEADER - Change Bakery Name
 const bakery = document.querySelector(".bakery");
-
-bakery.addEventListener("click", () => {
-  const bakeryName = prompt("Enter a name for your bakery:");
-});
+bakery.addEventListener("click", () => {});
 
 // SECTION CHOCO
 //importer la chocolatine
@@ -37,11 +33,13 @@ const chocoClicked = (chocolatines) => {
   const scoreValue = chocolatines ? chocolatines : parseInt(score.innerText);
   let newScore;
   newScore = scoreValue + 1;
+  // console.log(`Je clique`);
   updateScore(newScore);
 };
 
 //écoute si on clique sur choco
 choco.addEventListener("click", () => {
+  chocoClicked();
   chocoClicked();
 });
 
@@ -60,7 +58,7 @@ choco.addEventListener("click", () => {
 //   score.textContent = count;
 // }, 1000);
 
-// Augmentation Qté et décrémentation prix lors d'achats d'items
+//Incrémentation quantité et retour prix quand on 'click'sur l'item:
 const button1 = document.querySelector("#price1");
 const button2 = document.querySelector("#price2");
 const button3 = document.querySelector("#price3");
@@ -100,3 +98,17 @@ button3.addEventListener("click", function () {
   let qty = 1;
   buyItems(quantity3, price3);
 });
+
+//Brouillon de variables. Fortune liée à score pour l'affichage, incrémentée par l'action click sur choco.
+// let fortune = 0;
+// const score = document.querySelector("#score");
+
+// choco.addEventListener("click", () => {
+//   score.textContent = fortune++;
+// });
+
+//Variable timer. À définir selon les achats possibles : student, stone student, teacher, clandestine baker etc..
+// const rendement = setInterval(function () {
+//   count = count++; // ou peut-être - . Genre malus
+//   score.textContent = count;
+// }, 1000);
