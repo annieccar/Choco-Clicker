@@ -60,21 +60,43 @@ choco.addEventListener("click", () => {
 //   score.textContent = count;
 // }, 1000);
 
-//Incrémentation quantité et retour prix quand on 'click'sur l'item:
-
+// Augmentation Qté et décrémentation prix lors d'achats d'items
 const button1 = document.querySelector("#price1");
-let qty1 = 1;
+const button2 = document.querySelector("#price2");
+const button3 = document.querySelector("#price3");
 
-button1.addEventListener("click", function () {
+// let qty = 1;
+
+const buyItems = function (quantity, price) {
   // incrémente quantité:
-  const quantity1 = document.querySelector("#quantity1");
-  quantity1.innerHTML = "Quantity: " + qty1++;
+  quantity.innerHTML = "Quantity: " + qty++;
 
   //Décrémente score du prix:
   const storage = getStorage();
-  const price1 = parseInt(button1.dataset.price);
   const score = document.querySelector("#score span");
-  const value = storage.chocolatines - price1;
+  const value = storage.chocolatines - price;
 
+  //Update l'affichage
   updateScore(value);
+};
+
+button1.addEventListener("click", function () {
+  const quantity1 = document.querySelector("#quantity1");
+  const price1 = parseInt(button1.dataset.price);
+  let qty = 1;
+  buyItems(quantity1, price1);
+});
+
+button2.addEventListener("click", function () {
+  const quantity2 = document.querySelector("#quantity2");
+  const price2 = parseInt(button2.dataset.price);
+  let qty = 1;
+  buyItems(quantity2, price2);
+});
+
+button3.addEventListener("click", function () {
+  const quantity3 = document.querySelector("#quantity3");
+  const price3 = parseInt(button3.dataset.price);
+  let qty = 1;
+  buyItems(quantity3, price3);
 });
