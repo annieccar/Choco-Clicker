@@ -40,9 +40,24 @@ const chocoClicked = (chocolatines) => {
 //écoute si on clique sur choco
 choco.addEventListener("click", () => {
   chocoClicked();
+  chocoClicked();
 });
 
 //SECTION ITEMS
+//Brouillon de variables. Fortune liée à score pour l'affichage, incrémentée par l'action click sur choco.
+// let fortune = 0;
+// const score = document.querySelector("#score");
+
+// choco.addEventListener("click", () => {
+//   score.textContent = fortune++;
+// });
+
+//Variable timer. À définir selon les achats possibles : student, stone student, teacher, clandestine baker etc..
+// const rendement = setInterval(function () {
+//   count = count++; // ou peut-être - . Genre malus
+//   score.textContent = count;
+// }, 1000);
+
 //Incrémentation quantité et retour prix quand on 'click'sur l'item:
 const button1 = document.querySelector("#price1");
 let qty1 = 1;
@@ -54,10 +69,11 @@ button1.addEventListener("click", function () {
 
   //Décrémente score du prix:
   const storage = getStorage();
-  console.log(storage);
+  const price1 = parseInt(button1.dataset.price);
   const score = document.querySelector("#score span");
-  console.log(score);
-  const price1 = button1.value;
+  const value = storage.chocolatines - price1;
+
+  updateScore(value);
 });
 
 //Brouillon de variables. Fortune liée à score pour l'affichage, incrémentée par l'action click sur choco.
