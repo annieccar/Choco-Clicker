@@ -4,7 +4,6 @@ const bakery = document.querySelector(".bakery");
 
 bakery.addEventListener("click", () => {
   const bakeryName = prompt("Enter a name for your bakery:");
-  console.log("test");
 });
 
 // SECTION CHOCO
@@ -43,7 +42,7 @@ const chocoClicked = (chocolatines) => {
 
 //écoute si on clique sur choco
 choco.addEventListener("click", () => {
-  console.log("hello");
+  chocoClicked;
 });
 
 //SECTION ITEMS
@@ -61,15 +60,17 @@ choco.addEventListener("click", () => {
 //   score.textContent = count;
 // }, 1000);
 
-//Incrémentation quantité et retour prix quand on 'click':
+//Incrémentation quantité et retour prix quand on 'click'sur l'item:
 
 const button1 = document.querySelector("#price1");
-let qty1 = 0;
+let qty1 = 1;
+
 button1.addEventListener("click", function () {
   // incrémente quantité:
   const quantity1 = document.querySelector("#quantity1");
-  const price1 = button1.value;
   quantity1.innerHTML = "Quantity: " + qty1++;
 
   //Décrémente score du prix:
+  getStorage();
+  const price1 = button1.value;
 });
