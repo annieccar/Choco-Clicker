@@ -6,23 +6,23 @@
     --pulse: rgba(252, 163, 17, 0.02);
     --secondary-color: rgba(37, 37, 37); /* #14213D */
     --text-color: rgba(229, 229, 229); /* #e5e5e5*/
-
+    --font-primary: 'Luckiest Guy', cursive;
+    --font-secondary: 'Titillium Web', sans-serif; 
 }
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    overflow: hidden;
     user-select: none;
 }
 body {
     background-color: var(--background-color);
-    font-family: 'Titillium Web', sans-serif;  
+    font-family: var(--font-secondary)  
 }
 header {
     background-color: var(--primary-color);
     color: var(--background-color);
-    font-family: 'Luckiest Guy', cursive; 
+    font-family: var(--font-primary);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -43,10 +43,10 @@ header {
     color: var(--primary-color); 
     border: solid 0.2em;
     border-radius: 15px;
-    font-family: 'Luckiest Guy', cursive;
+    font-family: var(--font-primary);
     font-size: 1em;
 }
-.popup-container {
+.overlay {
     position: fixed;
     top: 0;
     bottom: 0;
@@ -54,11 +54,13 @@ header {
     right: 0;
     z-index: 1;
     background-color: var(--background-overlay);
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 .popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
     background-color: var(--background-color);
     display: flex;
     flex-direction: column;
@@ -103,9 +105,9 @@ header {
     text-align: center;
     padding: .2em;
 }
-/* .hidden {
+.hidden {
     display: none;
-} */
+}
 main {
     display: flex;
     flex-direction: column;
@@ -135,7 +137,13 @@ main {
     font-family:'Luckiest Guy', cursive;
     color: var(--primary-color);
 }
-.price-button {
+.item-qty {
+
+}
+.item-cps {
+    
+}
+.item-price {
     margin-top: 0.8em;
     padding: 0.5em;
     background-image: linear-gradient(var(--primary-color), white);

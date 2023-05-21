@@ -1,62 +1,169 @@
 //HEADER - Change Bakery Name
 const bakery = document.querySelector(".bakery");
-bakery.addEventListener("click", () => {});
+const overlay = document.querySelector(".overlay");
+const popup = document.querySelector(".popup");
+//Afficher le popup
+bakery.addEventListener("click", () => {
+  overlay.classList.toggle("hidden");
+  popup.classList.toggle("hidden");
+});
+//Masquer le popup
+overlay.addEventListener("click", () => {
+  overlay.classList.toggle("hidden");
+  popup.classList.toggle("hidden");
+});
+//TODO enregistrer l'input et l'afficher dans le DOM
 
 // SECTION CHOCO
-//importer la chocolatine
+//importer les élements du DOM
 const choco = document.querySelector("#choco");
+const scoreMain = document.querySelector("#score span");
+const scoreTitle = document.querySelector("title");
+const itemBox = document.querySelector(".item-box");
 
-//récupérer la sauvegarde du compte
-const getStorage = () => {
-  const chocolatines = localStorage.getItem("chocolatines") || 0;
-  const powerups = JSON.parse(localStorage.getItem("powerups")) || [];
-  const storage = {
-    chocolatines: chocolatines,
-    powerups: powerups,
-  };
-  return storage;
-};
-
-//mettre à jour l'affichache
-const updateScore = (chocolatines) => {
-  const title = document.querySelector("title");
-  const score = document.querySelector("#score span");
-  score.innerText = chocolatines;
-  title.innerHTML = chocolatines + " - Choco Clicker";
-  localStorage.setItem("chocolatines", chocolatines);
-};
-
+//compteur à zéro (Tagada Jones)
+let chocoCount = 0;
+updateScore(chocoCount);
+//mettre à jour le score
+function updateScore(newScore) {
+  scoreMain.innerText = newScore;
+  scoreTitle.innerHTML = newScore + " - Choco Clicker";
+  chocoCount = newScore;
+}
 //quand choco est cliquée
-const chocoClicked = (chocolatines) => {
-  const storage = getStorage();
-  const score = document.querySelector("#score span");
-  const scoreValue = chocolatines ? chocolatines : parseInt(score.innerText);
+function chocoClicked() {
+  let scoreValue = parseInt(scoreMain.innerHTML);
   let newScore;
   newScore = scoreValue + 1;
-  // console.log(`Je clique`);
   updateScore(newScore);
-};
-
+}
 //écoute si on clique sur choco
 choco.addEventListener("click", () => {
   chocoClicked();
 });
 
-//SECTION ITEMS
-//Brouillon de variables. Fortune liée à score pour l'affichage, incrémentée par l'action click sur choco.
-// let fortune = 0;
-// const score = document.querySelector("#score");
+//WORKER LIST
+const workerList = [
+  {
+    id: "0",
+    name: "Wilder",
+    qty: "0",
+    cps: "10",
+    yield: "0",
+    price: "50",
+  },
+  {
+    id: "1",
+    name: "Instructor",
+    qty: "0",
+    cps: "50",
+    yield: "0",
+    price: "250",
+  },
+  {
+    id: "2",
+    name: "Tourist",
+    qty: "0",
+    cps: "250",
+    yield: "0",
+    price: "1250",
+  },
+  {
+    id: "3",
+    name: "Anna Stepanoff",
+    qty: "0",
+    cps: "1250",
+    yield: "0",
+    price: "6250",
+  },
+];
 
-// choco.addEventListener("click", () => {
-//   score.textContent = fortune++;
-// });
+function createWorker(id, name, qty, cps, yield, price) {
+  const worker = document.createElement("div");
+  worker.classList.add(`item`);
+  worker.classList.add(`item${id}`);
+  // worker.classList.add(`hidden`);
+  itemBox.appendChild(worker);
 
-//Variable timer. À définir selon les achats possibles : student, stone student, teacher, clandestine baker etc..
-// const rendement = setInterval(function () {
-//   count = count++; // ou peut-être - . Genre malus
-//   score.textContent = count;
-// }, 1000);
+  const workerName = document.createElement("div");
+  workerName.classList.add(`item-name`);
+  worker.appendChild(workerName);
+  workerName.innerHTML = `${name}`;
 
+  const workerQty = document.createElement("div");
+  workerQty.classList.add(`item-qty`);
+  workerQty.classList.add(`item-qty${id}`);
+  worker.appendChild(workerQty);
+  workerQty.innerHTML = `Quantity: ${qty}`;
+
+  const workerCps = document.createElement("div");
+  workerCps.classList.add(`item-cps`);
+  workerCps.classList.add(`item-cps${id}`);
+  worker.appendChild(workerCps);
+  workerCps.innerHTML = `Cps: ${cps}`;
+
+  const workerYield = document.createElement("div");
+  workerYield.classList.add(`item-yield`);
+  workerYield.classList.add(`item-yield${id}`);
+  worker.appendChild(workerYield);
+  workerYield.innerHTML = `Yield: ${yield}`;
+
+  const workerPrice = document.createElement("div");
+  workerPrice.classList.add(`item-price`);
+  workerPrice.classList.add(`item-price${id}`);
+  worker.appendChild(workerPrice);
+  workerPrice.innerHTML = `Price: ${price}`;
+}
+for (let i = 0; i < workerList.length; i++) {
+  createWorker(
+    workerList[i].id,
+    workerList[i].name,
+    workerList[i].qty,
+    workerList[i].cps,
+    workerList[i].yield,
+    workerList[i].price
+  );
+}
+
+//J'achète un worker
+function buyWorker(id) {
+  //Je vais chercher les données dans la workerList
+  let qtyValue = parseInt(workerList[id].qty);
+  let cpsValue = parseInt(workerList[id].cps);
+  let yieldValue = parseInt(workerList[id].yield);
+  let priceValue = parseInt(workerList[id].price);
+  //Bloquer l'achat si pas assez de chocos
+  if (chocoCount < priceValue) {
+    alert(`La maison ne fait pas crédit`);
+  } else {
+    //On fait les maths
+    chocoCount = chocoCount - priceValue;
+    qtyValue = qtyValue + 1;
+    yieldValue = qtyValue * cpsValue;
+    priceValue = priceValue * 1.2;
+    //Update Array
+    workerList[id].qty = qtyValue;
+    workerList[id].yield = yieldValue;
+    workerList[id].price = priceValue;
+    //Update HTML
+    const qty = document.querySelector(`.item-qty${id}`);
+    const yield = document.querySelector(`.item-yield${id}`);
+    const price = document.querySelector(`.item-price${id}`);
+    qty.innerHTML = `Quantity: ${qtyValue}`;
+    yield.innerHTML = `Yield: ${yieldValue}`;
+    price.innerHTML = `Price: ${priceValue}`;
+    updateScore(chocoCount);
+  }
+}
+
+//TODO écouter tous les boutons des items ie =>
+const buy0 = document.querySelector(".item-price0");
+buy0.addEventListener("click", () => {
+  buyWorker(0);
+});
+
+//TODO appliquer le yield (rendement) de chaque item toutes les secondes
+//appliquer le Yield d'un
 //Incrémentation quantité et retour prix quand on 'click'sur l'item:
 const button1 = document.querySelector("#price1");
 const button2 = document.querySelector("#price2");
@@ -108,4 +215,4 @@ button3.addEventListener("click", function () {
 // const rendement = setInterval(function () {
 //   count = count++; // ou peut-être - . Genre malus
 //   score.textContent = count;
-// }, 1000);
+// }, 1000)
