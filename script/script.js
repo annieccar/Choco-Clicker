@@ -40,7 +40,6 @@ const chocoClicked = (chocolatines) => {
 //écoute si on clique sur choco
 choco.addEventListener("click", () => {
   chocoClicked();
-  chocoClicked();
 });
 
 //SECTION ITEMS
@@ -63,7 +62,7 @@ const button1 = document.querySelector("#price1");
 const button2 = document.querySelector("#price2");
 const button3 = document.querySelector("#price3");
 
-// let qty = 1;
+let qty = 1;
 
 const buyItems = function (quantity, price) {
   // incrémente quantité:
@@ -81,21 +80,19 @@ const buyItems = function (quantity, price) {
 button1.addEventListener("click", function () {
   const quantity1 = document.querySelector("#quantity1");
   const price1 = parseInt(button1.dataset.price);
-  let qty = 1;
+
   buyItems(quantity1, price1);
 });
-
 button2.addEventListener("click", function () {
   const quantity2 = document.querySelector("#quantity2");
   const price2 = parseInt(button2.dataset.price);
-  let qty = 1;
+
   buyItems(quantity2, price2);
 });
-
 button3.addEventListener("click", function () {
   const quantity3 = document.querySelector("#quantity3");
   const price3 = parseInt(button3.dataset.price);
-  let qty = 1;
+  qty = 1;
   buyItems(quantity3, price3);
 });
 
