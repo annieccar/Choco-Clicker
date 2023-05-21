@@ -50,7 +50,7 @@ const workerList = [
     qty: "0",
     cps: "10",
     yield: "0",
-    price: "50",
+    price: "2",
   },
   {
     id: "1",
@@ -58,7 +58,7 @@ const workerList = [
     qty: "0",
     cps: "50",
     yield: "0",
-    price: "250",
+    price: "4",
   },
   {
     id: "2",
@@ -66,7 +66,7 @@ const workerList = [
     qty: "0",
     cps: "250",
     yield: "0",
-    price: "1250",
+    price: "5",
   },
   {
     id: "3",
@@ -74,7 +74,7 @@ const workerList = [
     qty: "0",
     cps: "1250",
     yield: "0",
-    price: "6250",
+    price: "10",
   },
 ];
 
@@ -108,7 +108,7 @@ function createWorker(id, name, qty, cps, yield, price) {
   worker.appendChild(workerYield);
   workerYield.innerHTML = `Yield: ${yield}`;
 
-  const workerPrice = document.createElement("div");
+  const workerPrice = document.createElement("button");
   workerPrice.classList.add(`item-price`);
   workerPrice.classList.add(`item-price${id}`);
   worker.appendChild(workerPrice);
@@ -126,82 +126,45 @@ for (let i = 0; i < workerList.length; i++) {
 }
 
 //J'achète un worker
-function buyWorker(id) {
-  //Je vais chercher les données dans la workerList
-  let qtyValue = parseInt(workerList[id].qty);
-  let cpsValue = parseInt(workerList[id].cps);
-  let yieldValue = parseInt(workerList[id].yield);
+function buyItem(id) {
   let priceValue = parseInt(workerList[id].price);
-  //Bloquer l'achat si pas assez de chocos
+  let qtyValue = parseInt(workerList[id].qty);
+  let qtyDisplayed = document.querySelector(`.item-qty${id}`);
+
   if (chocoCount < priceValue) {
     alert(`La maison ne fait pas crédit`);
   } else {
-    //On fait les maths
-    chocoCount = chocoCount - priceValue;
+    // incrémente quantité:
     qtyValue = qtyValue + 1;
-    yieldValue = qtyValue * cpsValue;
-    priceValue = priceValue * 1.2;
-    //Update Array
     workerList[id].qty = qtyValue;
-    workerList[id].yield = yieldValue;
-    workerList[id].price = priceValue;
-    //Update HTML
-    const qty = document.querySelector(`.item-qty${id}`);
-    const yield = document.querySelector(`.item-yield${id}`);
-    const price = document.querySelector(`.item-price${id}`);
-    qty.innerHTML = `Quantity: ${qtyValue}`;
-    yield.innerHTML = `Yield: ${yieldValue}`;
-    price.innerHTML = `Price: ${priceValue}`;
+
+    //Décrémente score du prix:
+    chocoCount = chocoCount - priceValue;
+
+    //Update l'affichage
     updateScore(chocoCount);
+    qtyDisplayed.innerHTML = "Quantity: " + qtyValue;
   }
 }
 
-//TODO écouter tous les boutons des items ie =>
-const buy0 = document.querySelector(".item-price0");
-buy0.addEventListener("click", () => {
-  buyWorker(0);
-});
+//écouter tous les boutons des items ie =>
+let priceButtons = document.querySelectorAll(".item-price");
+let buttonsArray = Array.from(priceButtons);
+
+for (let j = 0; j < workerList.length; j++) {
+  buttonsArray[j].addEventListener("click", function () {
+    buyItem(j);
+  });
+}
+
+// if (chocoCount < 2) {
+//   buttonsArray[0].disabled = true;
+// } else {
+//   buttonsArray[0].disabled = false;
+// }
 
 //TODO appliquer le yield (rendement) de chaque item toutes les secondes
 //appliquer le Yield d'un
-//Incrémentation quantité et retour prix quand on 'click'sur l'item:
-const button1 = document.querySelector("#price1");
-const button2 = document.querySelector("#price2");
-const button3 = document.querySelector("#price3");
-
-let qty = 1;
-
-const buyItems = function (quantity, price) {
-  // incrémente quantité:
-  quantity.innerHTML = "Quantity: " + qty++;
-
-  //Décrémente score du prix:
-  const storage = getStorage();
-  const score = document.querySelector("#score span");
-  const value = storage.chocolatines - price;
-
-  //Update l'affichage
-  updateScore(value);
-};
-
-button1.addEventListener("click", function () {
-  const quantity1 = document.querySelector("#quantity1");
-  const price1 = parseInt(button1.dataset.price);
-
-  buyItems(quantity1, price1);
-});
-button2.addEventListener("click", function () {
-  const quantity2 = document.querySelector("#quantity2");
-  const price2 = parseInt(button2.dataset.price);
-
-  buyItems(quantity2, price2);
-});
-button3.addEventListener("click", function () {
-  const quantity3 = document.querySelector("#quantity3");
-  const price3 = parseInt(button3.dataset.price);
-  qty = 1;
-  buyItems(quantity3, price3);
-});
 
 //Brouillon de variables. Fortune liée à score pour l'affichage, incrémentée par l'action click sur choco.
 // let fortune = 0;
@@ -216,3 +179,35 @@ button3.addEventListener("click", function () {
 //   count = count++; // ou peut-être - . Genre malus
 //   score.textContent = count;
 // }, 1000)
+
+//fonction Sam
+//J'achète un worker
+// function buyWorker(id) {
+//Je vais chercher les données dans la workerList
+// let qtyValue = parseInt(workerList[id].qty);
+// let cpsValue = parseInt(workerList[id].cps);
+// let yieldValue = parseInt(workerList[id].yield);
+// let priceValue = parseInt(workerList[id].price);
+//Bloquer l'achat si pas assez de chocos
+//   if (chocoCount < priceValue) {
+//     alert(`La maison ne fait pas crédit`);
+//   } else {
+// //On fait les maths
+// chocoCount = chocoCount - priceValue;
+// qtyValue = qtyValue + 1;
+// yieldValue = qtyValue * cpsValue;
+// priceValue = priceValue * 1.2;
+// //Update Array
+// workerList[id].qty = qtyValue;
+// workerList[id].yield = yieldValue;
+// workerList[id].price = priceValue;
+// //Update HTML
+// const qty = document.querySelector(`.item-qty${id}`);
+// const yield = document.querySelector(`.item-yield${id}`);
+// const price = document.querySelector(`.item-price${id}`);
+// qty.innerHTML = `Quantity: ${qtyValue}`;
+// yield.innerHTML = `Yield: ${yieldValue}`;
+// price.innerHTML = `Price: ${priceValue}`;
+// updateScore(chocoCount);
+//   }
+// }
