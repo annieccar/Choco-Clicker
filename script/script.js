@@ -128,8 +128,13 @@ for (let i = 0; i < workerList.length; i++) {
 //J'achète un worker
 function buyItem(id) {
   let priceValue = parseInt(workerList[id].price);
+  let yieldValue = parseInt(workerList[id].yield);
+  let cpsValue = parseInt(workerList[id].cps);
   let qtyValue = parseInt(workerList[id].qty);
+
   let qtyDisplayed = document.querySelector(`.item-qty${id}`);
+  let yieldDisplayed = document.querySelector(`.item-yield${id}`);
+  let priceDisplayed = document.querySelector(`.item-price${id}`);
 
   if (chocoCount < priceValue) {
     alert(`La maison ne fait pas crédit`);
@@ -137,13 +142,22 @@ function buyItem(id) {
     // incrémente quantité:
     qtyValue = qtyValue + 1;
     workerList[id].qty = qtyValue;
+    yieldValue = qtyValue * cpsValue;
+    workerList[id].yield = yieldValue;
 
     //Décrémente score du prix:
     chocoCount = chocoCount - priceValue;
 
+    // Incrémente prix:
+    priceValue = priceValue * 1.1;
+    workerList[id].price = priceValue;
+    console.log(workerList[id].price);
+
     //Update l'affichage
     updateScore(chocoCount);
     qtyDisplayed.innerHTML = "Quantity: " + qtyValue;
+    yieldDisplayed.innerHTML = "Yield: " + yieldValue;
+    priceDisplayed.innerHTML = "Price: " + priceValue;
   }
 }
 
