@@ -161,6 +161,7 @@ main {
     font-size: 1em;
     font-weight: bold; 
 }
+
 .choco-message {
     background-color: var(--background-shade);
     color: var(--text-color);

@@ -2,6 +2,8 @@
 const bakery = document.querySelector(".bakery");
 const overlay = document.querySelector(".overlay");
 const popup = document.querySelector(".popup");
+const popupInput = document.querySelector(".popup-input");
+const popupSubmit = document.querySelector(".popup-submit");
 //Afficher le popup
 bakery.addEventListener("click", () => {
   overlay.classList.toggle("hidden");
@@ -12,7 +14,53 @@ overlay.addEventListener("click", () => {
   overlay.classList.toggle("hidden");
   popup.classList.toggle("hidden");
 });
-//TODO enregistrer l'input et l'afficher dans le DOM
+//TODO Créer une fonction de validation à rappeller avec les deux event listener
+//Submit name enter
+popupInput.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    const errors = [];
+    if (popupInput.value === "" || popupInput.value == null) {
+      errors.push(`Name is required`);
+    }
+    if (popupInput.value.length < 3) {
+      errors.push(`Name must be 3 characters long minimum`);
+    }
+    if (popupInput.value.length > 12) {
+      errors.push(`Name must be 12 character long maximum`);
+    }
+    if (errors.length > 0) {
+      e.preventDefault();
+      alert(errors.join(","));
+      return;
+    } else {
+      bakery.innerHTML = `${popupInput.value}`;
+      overlay.classList.toggle("hidden");
+      popup.classList.toggle("hidden");
+    }
+  }
+});
+//Submit name Click
+popupSubmit.addEventListener("click", (e) => {
+  const errors = [];
+  if (popupInput.value === "" || popupInput.value == null) {
+    errors.push(`Name is required`);
+  }
+  if (popupInput.value.length < 3) {
+    errors.push(`Name must be 3 characters long minimum`);
+  }
+  if (popupInput.value.length > 12) {
+    errors.push(`Name must be 12 character long maximum`);
+  }
+  if (errors.length > 0) {
+    e.preventDefault();
+    alert(errors.join(","));
+    return;
+  } else {
+    bakery.innerHTML = `${popupInput.value}`;
+    overlay.classList.toggle("hidden");
+    popup.classList.toggle("hidden");
+  }
+});
 
 // SECTION CHOCO
 //importer les élements du DOM
@@ -149,9 +197,9 @@ function buyItem(id) {
     chocoCount = chocoCount - priceValue;
 
     // Incrémente prix:
-    priceValue = priceValue * 1.1;
-    workerList[id].price = priceValue;
-    console.log(workerList[id].price);
+    // priceValue = priceValue * 1.1;
+    // workerList[id].price = priceValue;
+    // console.log(workerList[id].price);
 
     //Update l'affichage
     updateScore(chocoCount);
@@ -161,21 +209,37 @@ function buyItem(id) {
   }
 }
 
-//écouter tous les boutons des items ie =>
+// griser les boutons si le score n'est pas suffisant pour acheter
 let priceButtons = document.querySelectorAll(".item-price");
 let buttonsArray = Array.from(priceButtons);
 
+let button0 = document.querySelector(".item-price0");
+
+function purchaseControl(i) {
+  if (chocoCount >= priceValue) {
+    buttonsArray[i].disabled = false;
+    buttonsArray[i].style.backgroundImage =
+      "linear-gradient(var(--primary-color), white)";
+  } else {
+    buttonsArray[i].disabled = true;
+    buttonsArray[i].style.backgroundImage = "linear-gradient(grey, white)";
+  }
+  console.log(buttonsArray[i].disabled);
+}
+
+for (let i = 0; i <= workerList.length; i++) {
+  setInterval(function () {
+    priceValue = parseInt(workerList[i].price);
+    purchaseControl(i);
+  }, 1000);
+}
+
+//Lancer fonction buyItem quand on clique sur bouton =>
 for (let j = 0; j < workerList.length; j++) {
   buttonsArray[j].addEventListener("click", function () {
     buyItem(j);
   });
 }
-
-// if (chocoCount < 2) {
-//   buttonsArray[0].disabled = true;
-// } else {
-//   buttonsArray[0].disabled = false;
-// }
 
 // Incrémentation / seconde. Ça marche mais c'est répétitivementmoche....
 
