@@ -84,6 +84,7 @@ header {
 }
 .popup-input {
     background-color: var(--background-shade);
+    color: var(--primary-color);
     border: none;
     border-radius: .5em;
     font-family: 'Titillium Web', sans-serif;
@@ -144,12 +145,7 @@ main {
     color: var(--primary-color);
     text-align: center;
 }
-.item-qty {
 
-}
-.item-cps {
-    
-}
 .item-price {
     margin-top: 0.8em;
     padding: 0.5em;
