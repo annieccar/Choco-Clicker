@@ -2,6 +2,8 @@
 const bakery = document.querySelector(".bakery");
 const overlay = document.querySelector(".overlay");
 const popup = document.querySelector(".popup");
+const popupInput = document.querySelector(".popup-input");
+const popupSubmit = document.querySelector(".popup-submit");
 //Afficher le popup
 bakery.addEventListener("click", () => {
   overlay.classList.toggle("hidden");
@@ -12,7 +14,53 @@ overlay.addEventListener("click", () => {
   overlay.classList.toggle("hidden");
   popup.classList.toggle("hidden");
 });
-//TODO enregistrer l'input et l'afficher dans le DOM
+//TODO Créer une fonction de validation à rappeller avec les deux event listener
+//Submit name enter
+popupInput.addEventListener("keypress", (e) => {
+  if (e.key === "Enter") {
+    const errors = [];
+    if (popupInput.value === "" || popupInput.value == null) {
+      errors.push(`Name is required`);
+    }
+    if (popupInput.value.length < 3) {
+      errors.push(`Name must be 3 characters long minimum`);
+    }
+    if (popupInput.value.length > 12) {
+      errors.push(`Name must be 12 character long maximum`);
+    }
+    if (errors.length > 0) {
+      e.preventDefault();
+      alert(errors.join(","));
+      return;
+    } else {
+      bakery.innerHTML = `${popupInput.value}`;
+      overlay.classList.toggle("hidden");
+      popup.classList.toggle("hidden");
+    }
+  }
+});
+//Submit name Click
+popupSubmit.addEventListener("click", (e) => {
+  const errors = [];
+  if (popupInput.value === "" || popupInput.value == null) {
+    errors.push(`Name is required`);
+  }
+  if (popupInput.value.length < 3) {
+    errors.push(`Name must be 3 characters long minimum`);
+  }
+  if (popupInput.value.length > 12) {
+    errors.push(`Name must be 12 character long maximum`);
+  }
+  if (errors.length > 0) {
+    e.preventDefault();
+    alert(errors.join(","));
+    return;
+  } else {
+    bakery.innerHTML = `${popupInput.value}`;
+    overlay.classList.toggle("hidden");
+    popup.classList.toggle("hidden");
+  }
+});
 
 // SECTION CHOCO
 //importer les élements du DOM
