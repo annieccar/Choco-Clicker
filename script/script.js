@@ -62,34 +62,6 @@ popupSubmit.addEventListener("click", (e) => {
   }
 });
 
-// SECTION CHOCO
-//importer les élements du DOM
-const choco = document.querySelector("#choco");
-const scoreMain = document.querySelector("#score span");
-const scoreTitle = document.querySelector("title");
-const itemBox = document.querySelector(".item-box");
-
-//compteur à zéro (Tagada Jones)
-let chocoCount = 0;
-updateScore(chocoCount);
-//mettre à jour le score
-function updateScore(newScore) {
-  scoreMain.innerText = newScore;
-  scoreTitle.innerHTML = newScore + " - Choco Clicker";
-  chocoCount = newScore;
-}
-//quand choco est cliquée
-function chocoClicked() {
-  let scoreValue = parseInt(scoreMain.innerHTML);
-  let newScore;
-  newScore = scoreValue + 1;
-  updateScore(newScore);
-}
-//écoute si on clique sur choco
-choco.addEventListener("click", () => {
-  chocoClicked();
-});
-
 //WORKER LIST
 const workerList = [
   {
@@ -125,6 +97,8 @@ const workerList = [
     price: "10",
   },
 ];
+
+const itemBox = document.querySelector(".item-box");
 
 function createWorker(id, name, qty, cps, yield, price) {
   const worker = document.createElement("div");
@@ -173,6 +147,51 @@ for (let i = 0; i < workerList.length; i++) {
   );
 }
 
+// SECTION CHOCO
+//importer les élements du DOM
+const choco = document.querySelector("#choco");
+const scoreMain = document.querySelector("#score span");
+const scoreTitle = document.querySelector("title");
+const priceButtons = document.querySelectorAll(".item-price");
+const buttonsArray = Array.from(priceButtons);
+
+// griser les boutons des items si le score n'est pas suffisant pour acheter
+function purchaseControl() {
+  for (let i = 0; i < workerList.length; i++) {
+    priceValue = workerList[i].price;
+
+    if (chocoCount >= priceValue) {
+      buttonsArray[i].disabled = false;
+      buttonsArray[i].style.backgroundImage =
+        "linear-gradient(var(--primary-color), white)";
+    } else {
+      buttonsArray[i].disabled = true;
+      buttonsArray[i].style.backgroundImage = "linear-gradient(grey, white)";
+    }
+  }
+}
+//compteur à zéro (Tagada Jones)
+let chocoCount = 0;
+updateScore(chocoCount);
+//mettre à jour le score
+function updateScore(newScore) {
+  scoreMain.innerText = newScore;
+  scoreTitle.innerHTML = newScore + " - Choco Clicker";
+  chocoCount = newScore;
+  purchaseControl();
+}
+//quand choco est cliquée
+function chocoClicked() {
+  let scoreValue = parseInt(scoreMain.innerHTML);
+  let newScore;
+  newScore = scoreValue + 1;
+  updateScore(newScore);
+}
+//écoute si on clique sur choco
+choco.addEventListener("click", () => {
+  chocoClicked();
+});
+
 //J'achète un worker
 function buyItem(id) {
   let priceValue = parseInt(workerList[id].price);
@@ -209,31 +228,6 @@ function buyItem(id) {
   }
 }
 
-// griser les boutons si le score n'est pas suffisant pour acheter
-let priceButtons = document.querySelectorAll(".item-price");
-let buttonsArray = Array.from(priceButtons);
-
-let button0 = document.querySelector(".item-price0");
-
-function purchaseControl(i) {
-  if (chocoCount >= priceValue) {
-    buttonsArray[i].disabled = false;
-    buttonsArray[i].style.backgroundImage =
-      "linear-gradient(var(--primary-color), white)";
-  } else {
-    buttonsArray[i].disabled = true;
-    buttonsArray[i].style.backgroundImage = "linear-gradient(grey, white)";
-  }
-  console.log(buttonsArray[i].disabled);
-}
-
-for (let i = 0; i <= workerList.length; i++) {
-  setInterval(function () {
-    priceValue = parseInt(workerList[i].price);
-    purchaseControl(i);
-  }, 1000);
-}
-
 //Lancer fonction buyItem quand on clique sur bouton =>
 for (let j = 0; j < workerList.length; j++) {
   buttonsArray[j].addEventListener("click", function () {
@@ -241,46 +235,11 @@ for (let j = 0; j < workerList.length; j++) {
   });
 }
 
-// Incrémentation / seconde. Ça marche mais c'est répétitivementmoche....
+// Incrémentation / seconde.
 
 const rendement = setInterval(function () {
-  chocoCount =
-    chocoCount +
-    parseInt(workerList[0].yield) +
-    parseInt(workerList[1].yield) +
-    parseInt(workerList[2].yield) +
-    parseInt(workerList[3].yield);
-  updateScore(chocoCount);
+  for (let i = 0; i < workerList.length; i++) {
+    chocoCount = chocoCount + parseInt(workerList[i].yield);
+    updateScore(chocoCount);
+  }
 }, 1000);
-
-//fonction Sam
-//J'achète un worker
-// function buyWorker(id) {
-//Je vais chercher les données dans la workerList
-// let qtyValue = parseInt(workerList[id].qty);
-// let cpsValue = parseInt(workerList[id].cps);
-// let yieldValue = parseInt(workerList[id].yield);
-// let priceValue = parseInt(workerList[id].price);
-//Bloquer l'achat si pas assez de chocos
-//   if (chocoCount < priceValue) {
-//     alert(`La maison ne fait pas crédit`);
-//   } else {
-// //On fait les maths
-// chocoCount = chocoCount - priceValue;
-// qtyValue = qtyValue + 1;
-// yieldValue = qtyValue * cpsValue;
-// priceValue = priceValue * 1.2;
-// //Update Array
-// workerList[id].qty = qtyValue;
-// workerList[id].yield = yieldValue;
-// workerList[id].price = priceValue;
-// //Update HTML
-// const qty = document.querySelector(`.item-qty${id}`);
-// const yield = document.querySelector(`.item-yield${id}`);
-// const price = document.querySelector(`.item-price${id}`);
-// qty.innerHTML = `Quantity: ${qtyValue}`;
-// yield.innerHTML = `Yield: ${yieldValue}`;
-// price.innerHTML = `Price: ${priceValue}`;
-// updateScore(chocoCount);
-//   }
-// }

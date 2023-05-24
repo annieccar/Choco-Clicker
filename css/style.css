@@ -149,7 +149,7 @@ main {
 .item-price {
     margin-top: 0.8em;
     padding: 0.5em;
-    background-image: linear-gradient(var(--primary-color), white);
+    background-image: linear-gradient(grey, white);
     color: var(--background-color);
     border-radius: 10px;
     border: solid 0.1px;
@@ -201,7 +201,7 @@ main {
 }
 
 
-@media screen and (min-width = 800px) {
+@media screen and (min-width: 800px) {
 
     * {
         background-color: red;
