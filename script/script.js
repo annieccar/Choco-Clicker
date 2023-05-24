@@ -244,43 +244,8 @@ for (let j = 0; j < workerList.length; j++) {
 // Incrémentation / seconde. Ça marche mais c'est répétitivementmoche....
 
 const rendement = setInterval(function () {
-  chocoCount =
-    chocoCount +
-    parseInt(workerList[0].yield) +
-    parseInt(workerList[1].yield) +
-    parseInt(workerList[2].yield) +
-    parseInt(workerList[3].yield);
-  updateScore(chocoCount);
+  for (let i = 0; i < workerList.length; i++) {
+    chocoCount = chocoCount + parseInt(workerList[i].yield);
+    updateScore(chocoCount);
+  }
 }, 1000);
-
-//fonction Sam
-//J'achète un worker
-// function buyWorker(id) {
-//Je vais chercher les données dans la workerList
-// let qtyValue = parseInt(workerList[id].qty);
-// let cpsValue = parseInt(workerList[id].cps);
-// let yieldValue = parseInt(workerList[id].yield);
-// let priceValue = parseInt(workerList[id].price);
-//Bloquer l'achat si pas assez de chocos
-//   if (chocoCount < priceValue) {
-//     alert(`La maison ne fait pas crédit`);
-//   } else {
-// //On fait les maths
-// chocoCount = chocoCount - priceValue;
-// qtyValue = qtyValue + 1;
-// yieldValue = qtyValue * cpsValue;
-// priceValue = priceValue * 1.2;
-// //Update Array
-// workerList[id].qty = qtyValue;
-// workerList[id].yield = yieldValue;
-// workerList[id].price = priceValue;
-// //Update HTML
-// const qty = document.querySelector(`.item-qty${id}`);
-// const yield = document.querySelector(`.item-yield${id}`);
-// const price = document.querySelector(`.item-price${id}`);
-// qty.innerHTML = `Quantity: ${qtyValue}`;
-// yield.innerHTML = `Yield: ${yieldValue}`;
-// price.innerHTML = `Price: ${priceValue}`;
-// updateScore(chocoCount);
-//   }
-// }
