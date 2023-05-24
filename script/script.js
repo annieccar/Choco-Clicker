@@ -177,8 +177,7 @@ for (let j = 0; j < workerList.length; j++) {
 //   buttonsArray[0].disabled = false;
 // }
 
-//TODO appliquer le yield (rendement) de chaque item toutes les secondes
-//appliquer le Yield d'un
+// Incrémentation / seconde. Ça marche mais c'est répétitivementmoche....
 
 //Brouillon de variables. Fortune liée à score pour l'affichage, incrémentée par l'action click sur choco.
 // let fortune = 0;
@@ -197,6 +196,15 @@ for (let j = 0; j < workerList.length; j++) {
 //   chocoCount = chocoCount + yieldSum;
 //   updateScore(chocoCount);
 // }, 1000);
+const rendement = setInterval(function () {
+  chocoCount =
+    chocoCount +
+    parseInt(workerList[0].yield) +
+    parseInt(workerList[1].yield) +
+    parseInt(workerList[2].yield) +
+    parseInt(workerList[3].yield);
+  updateScore(chocoCount);
+}, 1000);
 
 //fonction Sam
 //J'achète un worker
