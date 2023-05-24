@@ -23,7 +23,7 @@
 html, body {
     height: 100%;
 }
-body {
+main {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -37,6 +37,7 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
 }
 .logo {
     width: 12em;
@@ -124,7 +125,7 @@ header {
     overflow: hidden;
     overflow-x: scroll;
     max-width: 100%;
-    height: 15em;
+    /* height: 15em; */
  }
 
 .item {
@@ -160,13 +161,7 @@ header {
     font-weight: bold;
     min-width: 7.5em; 
 }
-.choco-box {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    flex-grow: 1;
-    justify-content: space-between;
-}
+
 .message-box {
     display: flex;
     justify-content: center;
@@ -187,9 +182,11 @@ header {
     flex-direction: column;
     align-items: center;
     flex-grow: 1;
+    justify-content: space-between;
 }
 .choco {
-    width: clamp(15em, 50%, 40em);
+    /* width: clamp(15em, 50%, 40em); */
+    width: 70%;
     border-radius: 50%;
     cursor: pointer;
     filter: drop-shadow(0 0 .3em var(--primary-color));
@@ -225,29 +222,51 @@ header {
 }
 
 
-/* @media screen and (min-width: 650px) {
+@media screen and (min-width: 768px) {
+
+header{
+    height: 10vh;
+}
+.bakery{
+    margin-right:1em;
+}
+
 main {
     flex-direction: row;
     align-items: flex-start;
+    height: 90vh;
 }
-.choco-box {
+.choco-container {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-around;
+    height: 100%;
 }
 .item-box {
     display: flex;
     flex-direction: column;
+    align-items: center;
     width: 25%;
     overflow: hidden;
-    overflow-y: scroll;
-    
+    overflow-y: scroll; 
+    max-height: 100%; 
 }
-
+.item{
+    width: 80%;
+}
+.choco{
+    width: clamp(15em, 50%, 40em); 
+}
+.message-box{
+    height:5em;
+}
 .choco-message {
-    width: 65%;
+    width: 85%;
+    font-size: 1.5em;
 }
-#choco {
-    max-width: 30em;
+.score{
+    font-size: 1.5em;
 }
-} */
+ 
+} 
