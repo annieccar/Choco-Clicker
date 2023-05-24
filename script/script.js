@@ -149,9 +149,9 @@ function buyItem(id) {
     chocoCount = chocoCount - priceValue;
 
     // Incrémente prix:
-    priceValue = priceValue * 1.1;
-    workerList[id].price = priceValue;
-    console.log(workerList[id].price);
+    // priceValue = priceValue * 1.1;
+    // workerList[id].price = priceValue;
+    // console.log(workerList[id].price);
 
     //Update l'affichage
     updateScore(chocoCount);
@@ -161,41 +161,40 @@ function buyItem(id) {
   }
 }
 
-//écouter tous les boutons des items ie =>
+// griser les boutons si le score n'est pas suffisant pour acheter
 let priceButtons = document.querySelectorAll(".item-price");
 let buttonsArray = Array.from(priceButtons);
 
+let button0 = document.querySelector(".item-price0");
+
+function purchaseControl(i) {
+  if (chocoCount >= priceValue) {
+    buttonsArray[i].disabled = false;
+    buttonsArray[i].style.backgroundImage =
+      "linear-gradient(var(--primary-color), white)";
+  } else {
+    buttonsArray[i].disabled = true;
+    buttonsArray[i].style.backgroundImage = "linear-gradient(grey, white)";
+  }
+  console.log(buttonsArray[i].disabled);
+}
+
+for (let i = 0; i <= workerList.length; i++) {
+  setInterval(function () {
+    priceValue = parseInt(workerList[i].price);
+    purchaseControl(i);
+  }, 1000);
+}
+
+//Lancer fonction buyItem quand on clique sur bouton =>
 for (let j = 0; j < workerList.length; j++) {
   buttonsArray[j].addEventListener("click", function () {
     buyItem(j);
   });
 }
 
-// if (chocoCount < 2) {
-//   buttonsArray[0].disabled = true;
-// } else {
-//   buttonsArray[0].disabled = false;
-// }
-
 // Incrémentation / seconde. Ça marche mais c'est répétitivementmoche....
 
-//Brouillon de variables. Fortune liée à score pour l'affichage, incrémentée par l'action click sur choco.
-// let fortune = 0;
-// const score = document.querySelector("#score");
-
-// choco.addEventListener("click", () => {
-//   score.textContent = fortune++;
-// });
-
-//Variable timer. À définir selon les achats possibles : student, stone student, teacher, clandestine baker etc..
-// let yieldSum
-// for (let i =0; i < workerList.length; i++){
-//     yieldSum = yieldSum + parseInt(workerList[i].yield);
-//   }
-// const rendement = setInterval(function () {
-//   chocoCount = chocoCount + yieldSum;
-//   updateScore(chocoCount);
-// }, 1000);
 const rendement = setInterval(function () {
   chocoCount =
     chocoCount +
