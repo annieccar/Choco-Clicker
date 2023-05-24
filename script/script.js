@@ -68,33 +68,41 @@ const workerList = [
     id: "0",
     name: "Wilder",
     qty: "0",
-    cps: "10",
+    cps: "1",
     yield: "0",
-    price: "2",
+    price: "15",
   },
   {
     id: "1",
     name: "Instructor",
     qty: "0",
-    cps: "50",
+    cps: "10",
     yield: "0",
-    price: "4",
+    price: "150",
   },
   {
     id: "2",
-    name: "Tourist",
+    name: "Anna Stepanoff",
     qty: "0",
-    cps: "250",
+    cps: "100",
     yield: "0",
-    price: "5",
+    price: "1500",
   },
   {
     id: "3",
-    name: "Anna Stepanoff",
+    name: "French Tourist",
     qty: "0",
-    cps: "1250",
+    cps: "1000",
     yield: "0",
-    price: "10",
+    price: "15000",
+  },
+  {
+    id: "4",
+    name: "John Cena",
+    qty: "0",
+    cps: "10000",
+    yield: "0",
+    price: "150000",
   },
 ];
 
@@ -210,7 +218,7 @@ function buyItem(id) {
   //Décrémente score du prix:
   chocoCount = chocoCount - priceValue;
   //Incrémente prix:
-  priceValue = Math.ceil(priceValue * 1.5);
+  priceValue = Math.ceil(priceValue * 1.3);
   workerList[id].price = priceValue;
   //Update l'affichage
   updateScore(chocoCount);
@@ -226,10 +234,27 @@ for (let j = 0; j < workerList.length; j++) {
   });
 }
 
-// Incrémentation / seconde.
+//Incrémentation / seconde.
 const rendement = setInterval(function () {
   for (let i = 0; i < workerList.length; i++) {
     chocoCount = chocoCount + parseInt(workerList[i].yield);
     updateScore(chocoCount);
   }
 }, 1000);
+
+//Random message
+const message = document.querySelector(".choco-message");
+const messages = [
+  "9 Chiropracteurs sur 10 conseillent d'éviter ce genre de jeu",
+  "Niaise pas avec la puck !",
+  "L'abus de brouettes est dangereux pour la santé",
+  "C'est mieux ça que le pain au chocolat ! - proverbe Rançais",
+  "Il me tarde de voir Ayoub en queue de pie, pas toi ?",
+  "Le savais tu: il ne faut pas manger la pomme d'Adam",
+  "Les Devs sont des pervers, il font que mettre des Strings dans l'Array",
+];
+
+const randomMessage = setInterval(() => {
+  const newMessage = messages[Math.floor(Math.random() * messages.length)];
+  message.innerHTML = newMessage;
+}, 5000);
