@@ -210,9 +210,8 @@ function buyItem(id) {
   //Décrémente score du prix:
   chocoCount = chocoCount - priceValue;
   //Incrémente prix:
-  priceValue = Math.ceil(priceValue * 1.3);
+  priceValue = Math.ceil(priceValue * 1.5);
   workerList[id].price = priceValue;
-  console.log(workerList[id].price);
   //Update l'affichage
   updateScore(chocoCount);
   qtyDisplayed.innerHTML = `Quantity: ${qtyValue}`;
