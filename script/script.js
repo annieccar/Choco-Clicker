@@ -182,9 +182,8 @@ function updateScore(newScore) {
 }
 //quand choco est cliquée
 function chocoClicked() {
-  let scoreValue = parseInt(scoreMain.innerHTML);
   let newScore;
-  newScore = scoreValue + 1;
+  newScore = chocoCount + 1;
   updateScore(newScore);
 }
 //écoute si on clique sur choco
@@ -203,29 +202,22 @@ function buyItem(id) {
   let yieldDisplayed = document.querySelector(`.item-yield${id}`);
   let priceDisplayed = document.querySelector(`.item-price${id}`);
 
-  if (chocoCount < priceValue) {
-    alert(`La maison ne fait pas crédit`);
-  } else {
-    // incrémente quantité:
-    qtyValue = qtyValue + 1;
-    workerList[id].qty = qtyValue;
-    yieldValue = qtyValue * cpsValue;
-    workerList[id].yield = yieldValue;
-
-    //Décrémente score du prix:
-    chocoCount = chocoCount - priceValue;
-
-    // Incrémente prix:
-    // priceValue = priceValue * 1.1;
-    // workerList[id].price = priceValue;
-    // console.log(workerList[id].price);
-
-    //Update l'affichage
-    updateScore(chocoCount);
-    qtyDisplayed.innerHTML = "Quantity: " + qtyValue;
-    yieldDisplayed.innerHTML = "Yield: " + yieldValue;
-    priceDisplayed.innerHTML = "Price: " + priceValue;
-  }
+  //Incrémente quantité:
+  qtyValue = qtyValue + 1;
+  workerList[id].qty = qtyValue;
+  yieldValue = qtyValue * cpsValue;
+  workerList[id].yield = yieldValue;
+  //Décrémente score du prix:
+  chocoCount = chocoCount - priceValue;
+  //Incrémente prix:
+  priceValue = Math.ceil(priceValue * 1.3);
+  workerList[id].price = priceValue;
+  console.log(workerList[id].price);
+  //Update l'affichage
+  updateScore(chocoCount);
+  qtyDisplayed.innerHTML = `Quantity: ${qtyValue}`;
+  yieldDisplayed.innerHTML = `Yield: ${yieldValue}`;
+  priceDisplayed.innerHTML = `Price: ${priceValue}`;
 }
 
 //Lancer fonction buyItem quand on clique sur bouton =>
@@ -236,7 +228,6 @@ for (let j = 0; j < workerList.length; j++) {
 }
 
 // Incrémentation / seconde.
-
 const rendement = setInterval(function () {
   for (let i = 0; i < workerList.length; i++) {
     chocoCount = chocoCount + parseInt(workerList[i].yield);
