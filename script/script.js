@@ -25,8 +25,8 @@ popupInput.addEventListener("keypress", (e) => {
     if (popupInput.value.length < 3) {
       errors.push(`Name must be 3 characters long minimum`);
     }
-    if (popupInput.value.length > 12) {
-      errors.push(`Name must be 12 character long maximum`);
+    if (popupInput.value.length > 13) {
+      errors.push(`Name must be 13 character long maximum`);
     }
     if (errors.length > 0) {
       e.preventDefault();
@@ -48,8 +48,8 @@ popupSubmit.addEventListener("click", (e) => {
   if (popupInput.value.length < 3) {
     errors.push(`Name must be 3 characters long minimum`);
   }
-  if (popupInput.value.length > 12) {
-    errors.push(`Name must be 12 character long maximum`);
+  if (popupInput.value.length > 13) {
+    errors.push(`Name must be 13 character long maximum`);
   }
   if (errors.length > 0) {
     e.preventDefault();
@@ -112,7 +112,6 @@ function createWorker(id, name, qty, cps, yield, price) {
   const worker = document.createElement("div");
   worker.classList.add(`item`);
   worker.classList.add(`item${id}`);
-  // worker.classList.add(`hidden`);
   itemBox.appendChild(worker);
 
   const workerName = document.createElement("div");
@@ -120,29 +119,32 @@ function createWorker(id, name, qty, cps, yield, price) {
   worker.appendChild(workerName);
   workerName.innerHTML = `${name}`;
 
+  const workerDetails = document.createElement("div");
+  worker.appendChild(workerDetails);
+
   const workerQty = document.createElement("div");
   workerQty.classList.add(`item-qty`);
   workerQty.classList.add(`item-qty${id}`);
-  worker.appendChild(workerQty);
+  workerDetails.appendChild(workerQty);
   workerQty.innerHTML = `Quantity: ${qty}`;
 
   const workerCps = document.createElement("div");
   workerCps.classList.add(`item-cps`);
   workerCps.classList.add(`item-cps${id}`);
-  worker.appendChild(workerCps);
+  workerDetails.appendChild(workerCps);
   workerCps.innerHTML = `Cps: ${cps}`;
 
   const workerYield = document.createElement("div");
   workerYield.classList.add(`item-yield`);
   workerYield.classList.add(`item-yield${id}`);
-  worker.appendChild(workerYield);
+  workerDetails.appendChild(workerYield);
   workerYield.innerHTML = `Yield: ${yield}`;
 
   const workerPrice = document.createElement("button");
   workerPrice.classList.add(`item-price`);
   workerPrice.classList.add(`item-price${id}`);
-  worker.appendChild(workerPrice);
-  workerPrice.innerHTML = `Price: ${price}`;
+  workerDetails.appendChild(workerPrice);
+  workerPrice.innerHTML = `${price} Ch.`;
 }
 for (let i = 0; i < workerList.length; i++) {
   createWorker(
@@ -224,7 +226,7 @@ function buyItem(id) {
   updateScore(chocoCount);
   qtyDisplayed.innerHTML = `Quantity: ${qtyValue}`;
   yieldDisplayed.innerHTML = `Yield: ${yieldValue}`;
-  priceDisplayed.innerHTML = `Price: ${priceValue}`;
+  priceDisplayed.innerHTML = `${priceValue} Ch.`;
 }
 
 //Lancer fonction buyItem quand on clique sur bouton =>

@@ -13,10 +13,6 @@
     --font-secondary: 'Titillium Web', sans-serif;
     /* Sizes */
     --space: 0.5em;
-    --space1: (var(--space)*2);
-    --space2: (var(--space1)*2);
-    --space4: (var(--space2)*2);
-    --space8: (var(--space4)*2);
 }
 * {
     margin: 0;
@@ -30,6 +26,7 @@ html, body {
 body {
     display: flex;
     flex-direction: column;
+    align-items: center;
     background-color: var(--background-color);
     font-family: var(--font-secondary);
 }
@@ -46,14 +43,13 @@ header {
     height: auto;
 }
 .bakery {
-    margin:1em;
     padding: var(--space) var(--space);
     background-image: linear-gradient(var(--background-color), rgb(82, 82, 116));
     color: var(--primary-color); 
     border: solid 0.2em;
     border-radius: 15px;
     font-family: var(--font-primary);
-    font-size: 1em;
+    font-size: 1.5em;
 }
 .overlay {
     position: fixed;
@@ -79,6 +75,7 @@ header {
     border: .1em solid var(--primary-color);
     box-shadow: 0 0 .6em .2em var(--primary-color);
     padding: 1em;
+    text-align: center;
 }
 .popup-close {
     font-size: 2em;
@@ -122,12 +119,12 @@ header {
 .item-box {
     background-color: var(--background-shade);
     display: flex;
-    flex-direction: row;
     justify-content: flex-start;
-    margin-bottom:1em;
+    margin-bottom:1.5em;
     overflow: hidden;
     overflow-x: scroll;
     max-width: 100%;
+    height: 15em;
  }
 
 .item {
@@ -139,26 +136,29 @@ header {
     display:flex;
     flex-direction:column;
     align-items: center;
-    min-width: 8em;       
+    justify-content: space-between;
+    min-width: 9.5em;
+    font-size: 1.1em;       
 }
 
 .item-name{
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-family:'Luckiest Guy', cursive;
     color: var(--primary-color);
     text-align: center;
 }
 
 .item-price {
-    margin-top: 0.8em;
-    padding: 0.5em;
+    margin-top: 0.5em;
+    padding: 0.3em 1em;
     background-image: linear-gradient(grey, white);
     color: var(--background-color);
     border-radius: 10px;
     border: solid 0.1px;
     font-family: 'Titillium Web', sans-serif;
-    font-size: 1em;
-    font-weight: bold; 
+    font-size: 1.1em;
+    font-weight: bold;
+    min-width: 7.5em; 
 }
 .choco-box {
     display: flex;
@@ -167,15 +167,29 @@ header {
     flex-grow: 1;
     justify-content: space-between;
 }
-.choco-message {
+.message-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: var(--background-shade);
-    color: var(--text-color);
+    height: 4em;
     width: 90%;
+    border-radius: 15px;
+}
+.choco-message {
+    color: var(--text-color);
     text-align: center;
-    border-radius: 1em;
+    max-width: 90%;
+    font-size: 1.1em;
+}
+.choco-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
 }
 .choco {
-    max-width: 20em;
+    width: clamp(15em, 50%, 40em);
     border-radius: 50%;
     cursor: pointer;
     filter: drop-shadow(0 0 .3em var(--primary-color));
@@ -211,7 +225,7 @@ header {
 }
 
 
-@media screen and (min-width: 650px) {
+/* @media screen and (min-width: 650px) {
 main {
     flex-direction: row;
     align-items: flex-start;
@@ -236,4 +250,4 @@ main {
 #choco {
     max-width: 30em;
 }
-}
+} */
