@@ -189,10 +189,14 @@ for (let j = 0; j < workerList.length; j++) {
 // });
 
 //Variable timer. À définir selon les achats possibles : student, stone student, teacher, clandestine baker etc..
+// let yieldSum
+// for (let i =0; i < workerList.length; i++){
+//     yieldSum = yieldSum + parseInt(workerList[i].yield);
+//   }
 // const rendement = setInterval(function () {
-//   count = count++; // ou peut-être - . Genre malus
-//   score.textContent = count;
-// }, 1000)
+//   chocoCount = chocoCount + yieldSum;
+//   updateScore(chocoCount);
+// }, 1000);
 
 //fonction Sam
 //J'achète un worker
