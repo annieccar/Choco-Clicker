@@ -62,34 +62,6 @@ popupSubmit.addEventListener("click", (e) => {
   }
 });
 
-// SECTION CHOCO
-//importer les élements du DOM
-const choco = document.querySelector("#choco");
-const scoreMain = document.querySelector("#score span");
-const scoreTitle = document.querySelector("title");
-const itemBox = document.querySelector(".item-box");
-
-//compteur à zéro (Tagada Jones)
-let chocoCount = 0;
-updateScore(chocoCount);
-//mettre à jour le score
-function updateScore(newScore) {
-  scoreMain.innerText = newScore;
-  scoreTitle.innerHTML = newScore + " - Choco Clicker";
-  chocoCount = newScore;
-}
-//quand choco est cliquée
-function chocoClicked() {
-  let scoreValue = parseInt(scoreMain.innerHTML);
-  let newScore;
-  newScore = scoreValue + 1;
-  updateScore(newScore);
-}
-//écoute si on clique sur choco
-choco.addEventListener("click", () => {
-  chocoClicked();
-});
-
 //WORKER LIST
 const workerList = [
   {
@@ -126,6 +98,8 @@ const workerList = [
   },
 ];
 
+const itemBox = document.querySelector(".item-box");
+
 function createWorker(id, name, qty, cps, yield, price) {
   const worker = document.createElement("div");
   worker.classList.add(`item`);
@@ -158,7 +132,7 @@ function createWorker(id, name, qty, cps, yield, price) {
 
   const workerPrice = document.createElement("button");
   workerPrice.classList.add(`item-price`);
-  workerPrice.classList.add(`item-price${id}`);
+  workerPrice.classList.add(`item-price${id}`);git checkout
   worker.appendChild(workerPrice);
   workerPrice.innerHTML = `Price: ${price}`;
 }
@@ -172,6 +146,51 @@ for (let i = 0; i < workerList.length; i++) {
     workerList[i].price
   );
 }
+
+// SECTION CHOCO
+//importer les élements du DOM
+const choco = document.querySelector("#choco");
+const scoreMain = document.querySelector("#score span");
+const scoreTitle = document.querySelector("title");
+const priceButtons = document.querySelectorAll(".item-price");
+const buttonsArray = Array.from(priceButtons);
+
+// griser les boutons des items si le score n'est pas suffisant pour acheter
+function purchaseControl() {
+  for (let i = 0; i < workerList.length; i++) {
+    priceValue = workerList[i].price;
+
+    if (chocoCount >= priceValue) {
+      buttonsArray[i].disabled = false;
+      buttonsArray[i].style.backgroundImage =
+        "linear-gradient(var(--primary-color), white)";
+    } else {
+      buttonsArray[i].disabled = true;
+      buttonsArray[i].style.backgroundImage = "linear-gradient(grey, white)";
+    }
+  }
+}
+//compteur à zéro (Tagada Jones)
+let chocoCount = 0;
+updateScore(chocoCount);
+//mettre à jour le score
+function updateScore(newScore) {
+  scoreMain.innerText = newScore;
+  scoreTitle.innerHTML = newScore + " - Choco Clicker";
+  chocoCount = newScore;
+  purchaseControl();
+}
+//quand choco est cliquée
+function chocoClicked() {
+  let scoreValue = parseInt(scoreMain.innerHTML);
+  let newScore;
+  newScore = scoreValue + 1;
+  updateScore(newScore);
+}
+//écoute si on clique sur choco
+choco.addEventListener("click", () => {
+  chocoClicked();
+});
 
 //J'achète un worker
 function buyItem(id) {
@@ -209,31 +228,6 @@ function buyItem(id) {
   }
 }
 
-// griser les boutons si le score n'est pas suffisant pour acheter
-let priceButtons = document.querySelectorAll(".item-price");
-let buttonsArray = Array.from(priceButtons);
-
-let button0 = document.querySelector(".item-price0");
-
-function purchaseControl(i) {
-  if (chocoCount >= priceValue) {
-    buttonsArray[i].disabled = false;
-    buttonsArray[i].style.backgroundImage =
-      "linear-gradient(var(--primary-color), white)";
-  } else {
-    buttonsArray[i].disabled = true;
-    buttonsArray[i].style.backgroundImage = "linear-gradient(grey, white)";
-  }
-  console.log(buttonsArray[i].disabled);
-}
-
-for (let i = 0; i <= workerList.length; i++) {
-  setInterval(function () {
-    priceValue = parseInt(workerList[i].price);
-    purchaseControl(i);
-  }, 1000);
-}
-
 //Lancer fonction buyItem quand on clique sur bouton =>
 for (let j = 0; j < workerList.length; j++) {
   buttonsArray[j].addEventListener("click", function () {
@@ -241,7 +235,7 @@ for (let j = 0; j < workerList.length; j++) {
   });
 }
 
-// Incrémentation / seconde. Ça marche mais c'est répétitivementmoche....
+// Incrémentation / seconde.
 
 const rendement = setInterval(function () {
   for (let i = 0; i < workerList.length; i++) {
