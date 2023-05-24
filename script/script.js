@@ -132,7 +132,7 @@ function createWorker(id, name, qty, cps, yield, price) {
 
   const workerPrice = document.createElement("button");
   workerPrice.classList.add(`item-price`);
-  workerPrice.classList.add(`item-price${id}`);git checkout
+  workerPrice.classList.add(`item-price${id}`);
   worker.appendChild(workerPrice);
   workerPrice.innerHTML = `Price: ${price}`;
 }
