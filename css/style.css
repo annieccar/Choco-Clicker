@@ -29,6 +29,7 @@ main {
     align-items: center;
     background-color: var(--background-color);
     font-family: var(--font-secondary);
+    height: 90%;
 }
 header {
     background-color: var(--primary-color);
@@ -38,6 +39,7 @@ header {
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    height: 10%;
 }
 .logo {
     width: 12em;
@@ -51,6 +53,7 @@ header {
     border-radius: 15px;
     font-family: var(--font-primary);
     font-size: 1.5em;
+    height: 100%;
 }
 .overlay {
     position: fixed;
@@ -125,7 +128,7 @@ header {
     overflow: hidden;
     overflow-x: scroll;
     max-width: 100%;
-    /* height: 15em; */
+    /* height: 20%; */
  }
 
 .item {
@@ -183,6 +186,7 @@ header {
     align-items: center;
     flex-grow: 1;
     justify-content: space-between;
+    box-sizing: content-box;
 }
 .choco {
     /* width: clamp(15em, 50%, 40em); */
@@ -216,6 +220,8 @@ header {
     color: var(--text-color);
     font-family: var(--font-primary);
     width: 50%;
+    height: 3em;
+    line-height: 3em;
     text-align:  center;
     border-radius: 1em;
     margin-bottom: 2em;
@@ -250,7 +256,8 @@ main {
     width: 25%;
     overflow: hidden;
     overflow-y: scroll; 
-    max-height: 100%; 
+    height: 100%;
+    margin-bottom: 0; 
 }
 .item{
     width: 80%;
@@ -268,5 +275,5 @@ main {
 .score{
     font-size: 1.5em;
 }
- 
+/* Modifier scrollbar */
 } 
