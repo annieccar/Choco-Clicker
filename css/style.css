@@ -54,6 +54,7 @@ header {
     border-radius: 15px;
     font-family: var(--font-primary);
     font-size: 1.2em;
+    height: 70%;
 }
 .overlay {
     position: fixed;
@@ -235,14 +236,6 @@ header {
 
 
 @media screen and (min-width: 768px) {
-
-header{
-    height: 10vh;
-}
-
-.bakery{
-    margin-right:1em;
-}
 
 main {
     flex-direction: row;
