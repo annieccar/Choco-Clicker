@@ -42,18 +42,18 @@ header {
     height: 10%;
 }
 .logo {
-    width: 12em;
-    height: auto;
+    width: clamp(12em, 40%, 21em);
+    height: 100%;
 }
 .bakery {
-    padding: var(--space) var(--space);
+    padding: .7em .7em;
+    margin-right: 1em;
     background-image: linear-gradient(var(--background-color), rgb(82, 82, 116));
     color: var(--primary-color); 
     border: solid 0.2em;
     border-radius: 15px;
     font-family: var(--font-primary);
-    font-size: 1.5em;
-    height: 100%;
+    font-size: 1.2em;
 }
 .overlay {
     position: fixed;
@@ -119,6 +119,13 @@ header {
 .hidden {
     display: none;
 }
+::-webkit-scrollbar {
+    background-color: #252525;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #fca311;
+    border-radius: 5px;
+}
 
 .item-box {
     background-color: var(--background-shade);
@@ -128,7 +135,6 @@ header {
     overflow: hidden;
     overflow-x: scroll;
     max-width: 100%;
-    /* height: 20%; */
  }
 
 .item {
@@ -233,6 +239,7 @@ header {
 header{
     height: 10vh;
 }
+
 .bakery{
     margin-right:1em;
 }
