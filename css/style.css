@@ -42,7 +42,6 @@ header {
     height: 10%;
 }
 .logo {
-    width: clamp(12em, 40%, 21em);
     height: 100%;
 }
 .bakery {
@@ -235,10 +234,6 @@ header {
 
 
 @media screen and (min-width: 768px) {
-
-header{
-    height: 10vh;
-}
 
 .bakery{
     margin-right:1em;
